@@ -18,7 +18,8 @@ const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
 const model = genAI.getGenerativeModel({ model: "gemini-2.5-flash" });
 
 const router = Router();
-const localUpload = multer({ dest: "uploads/" });
+// const localUpload = multer({ dest: "uploads/" });
+const localUpload = multer({ storage: multer.memoryStorage() }); //Change later to prevent memory leak
 
 // ⭐ UPDATED: Define feature limits based on the pricing plan image (AI Application Checker)
 const PLAN_LIMITS = {
